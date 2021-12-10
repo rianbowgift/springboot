@@ -11,3 +11,4 @@ public class IndexController {
         return "index"; //.mustache가 생략된다
     }
 }
+//
