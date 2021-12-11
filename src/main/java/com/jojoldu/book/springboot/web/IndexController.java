@@ -1,8 +1,10 @@
 package com.jojoldu.book.springboot.web;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+@RequiredArgsConstructor
 @Controller
 public class IndexController {
 
@@ -10,5 +12,9 @@ public class IndexController {
     public String index(){
         return "index"; //.mustache가 생략된다
     }
+
+    @GetMapping("/posts/save")
+    public String postsSave(){
+        return "posts-save";
+    }
 }
-//
