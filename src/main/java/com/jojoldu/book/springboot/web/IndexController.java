@@ -14,7 +14,7 @@ public class IndexController {
 
 
     @GetMapping("/")    //앞의경로가 생략된다
-    public String index(Model model){
+    public String index(Model model){       // model = 객체를 저장할수있다
         model.addAttribute("posts",postsService.findAllDesc());
         return "index"; //.mustache가 생략된다
     }
