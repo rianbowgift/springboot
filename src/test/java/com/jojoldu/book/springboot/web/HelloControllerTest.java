@@ -1,9 +1,13 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.config.auth.SecurityConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +17,18 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.is;
 
 @ExtendWith(SpringExtension.class)    //테스트 진행할때 JUnit에 내장된 실행자 외에 다른거 실행할때쓴다. 여기선 SpringExtension실행시킨다.
-@WebMvcTest(controllers = HelloController.class)//web에 집중할수있는 어노테이션
+@WebMvcTest(controllers = HelloController.class,
+        excludeFilters = {
+                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
+        }
+)//web에 집중할수있는 어노테이션
 public class HelloControllerTest {
 
     @Autowired  //스프링이 관리하는 been을 주입받음
     private MockMvc mvc;    //웹api테스트할때 사용됨 get,post등 테스트가능
 
     @Test
+    @WithMockUser(roles="USER")
     public void hello가리턴된다() throws Exception{
         String hello = "hello";
 
@@ -29,6 +38,7 @@ public class HelloControllerTest {
     }
 
     @Test
+    @WithMockUser(roles="USER")
     public void HelloDTO가리턴된다() throws Exception {
         String name = "hello";
         int amount = 1000;
