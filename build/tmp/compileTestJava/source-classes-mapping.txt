@@ -1,0 +1,10 @@
+com/jojoldu/book/springboot/domain/posts/PostsRepositoryTest.java
+ com.jojoldu.book.springboot.domain.posts.PostsRepositoryTest
+com/jojoldu/book/springboot/dto/HelloResponseDtoTest.java
+ com.jojoldu.book.springboot.dto.HelloResponseDtoTest
+com/jojoldu/book/springboot/web/IndexControllerTest.java
+ com.jojoldu.book.springboot.web.IndexControllerTest
+com/jojoldu/book/springboot/web/HelloControllerTest.java
+ com.jojoldu.book.springboot.web.HelloControllerTest
+com/jojoldu/book/springboot/web/PostsApiControllerTest.java
+ com.jojoldu.book.springboot.web.PostsApiControllerTest
